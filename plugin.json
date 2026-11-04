@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "editableppt",
+  "version": "1.0.0",
+  "description": "Batch-convert images (slides, posters, screenshots) into editable PowerPoint decks with EditablePPT: real text boxes over separated image layers.",
+  "author": {
+    "name": "EditablePPT",
+    "url": "https://editableppt.com"
+  },
+  "homepage": "https://editableppt.com",
+  "repository": "https://github.com/a474516631/editableppt-agent-plugin",
+  "license": "MIT",
+  "keywords": ["powerpoint", "pptx", "image-to-ppt", "editable", "slides", "ocr", "mcp"]
+}
