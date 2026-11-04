@@ -1,0 +1,18 @@
+{
+  "name": "editableppt",
+  "owner": {
+    "name": "EditablePPT",
+    "url": "https://editableppt.com"
+  },
+  "metadata": {
+    "description": "EditablePPT plugins: turn images into editable PowerPoint decks."
+  },
+  "plugins": [
+    {
+      "name": "editableppt",
+      "source": "./",
+      "description": "Batch-convert images (slides, posters, screenshots) into editable PowerPoint decks with EditablePPT.",
+      "category": "productivity"
+    }
+  ]
+}

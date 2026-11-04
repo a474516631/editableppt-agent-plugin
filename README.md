@@ -26,8 +26,18 @@ editableppt-agent-plugin/
 │       └── references/troubleshooting.md
 ├── server/
 │   └── editableppt-mcp.mjs             # MCP server, zero dependencies (Node.js 18+)
+├── assets/logo.png
+├── .cursor-plugin/plugin.json          # Cursor adapter (see below)
+├── .claude-plugin/                     # Claude Code adapter + marketplace
 └── test/                               # end-to-end test against a mock API
 ```
+
+The root `plugin.json` + `mcp.json` are the portable package. Cursor and Claude
+Code don't expand the standard's `${PLUGIN_ROOT}` placeholder, so each gets a
+small adapter manifest that points at the same server with the client's own
+root variable (`${CURSOR_PLUGIN_ROOT}`, `${CLAUDE_PLUGIN_ROOT}`). Both clients
+read their adapter before the root manifest; every other client uses the
+portable files.
 
 ### MCP tools
 
@@ -60,20 +70,26 @@ pointing it at `https://github.com/a474516631/editableppt-agent-plugin` (or a
 local clone). See your client's setup instructions on
 [agent-plugins.org/compatible-clients](https://agent-plugins.org/compatible-clients).
 
-### Clients without Agent Plugins support
+### Cursor
+
+Install **EditablePPT** from the Cursor Marketplace (**Customize** → search
+"EditablePPT"), or test a local copy: clone this repository into
+`~/.cursor/plugins/local/editableppt` and run **Developer: Reload Window**.
+
+### Claude Code
+
+```
+/plugin install editableppt --marketplace a474516631/editableppt-agent-plugin
+```
+
+### Other clients
 
 The pieces work on their own:
 
 - **MCP server** — register a stdio server running
   `node /path/to/editableppt-agent-plugin/server/editableppt-mcp.mjs`.
-  For example, in Claude Code:
-
-  ```bash
-  claude mcp add editableppt -- node /path/to/editableppt-agent-plugin/server/editableppt-mcp.mjs
-  ```
-
 - **Skill** — copy `skills/images-to-editable-ppt/` into the client's skills
-  directory (for Claude Code: `~/.claude/skills/`).
+  directory.
 
 ## Sign-in and security
 
